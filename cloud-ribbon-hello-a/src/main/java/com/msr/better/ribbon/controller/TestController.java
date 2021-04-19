@@ -1,7 +1,10 @@
 package com.msr.better.ribbon.controller;
 
+import com.netflix.loadbalancer.ILoadBalancer;
 import com.netflix.loadbalancer.IRule;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
+import org.springframework.cloud.loadbalancer.support.LoadBalancerClientFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.ClientHttpRequestFactory;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +24,12 @@ public class TestController {
     @Autowired
     private RestTemplate restTemplate;
 
+    @Autowired
+    private LoadBalancerClientFactory loadBalancerClientFactory;
+
+    @Autowired
+    private LoadBalancerClient loadBalancerClient;
+
     @GetMapping("/test")
     public String test(){
         String body = restTemplate.getForEntity("http://RIBBON-SERVICE-B/test", String.class).getBody();
@@ -31,6 +40,12 @@ public class TestController {
     public String test2(){
         String body = restTemplate.getForEntity("http://RIBBON-SERVICE-ORDER/test", String.class).getBody();
         return body;
+    }
+
+    @GetMapping
+    public void client(){
+        System.out.println(loadBalancerClient.getClass().getName());
+        System.out.println(loadBalancerClientFactory.getClass().getName());
     }
 
 }
