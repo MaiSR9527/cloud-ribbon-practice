@@ -14,6 +14,9 @@
         <module>cloud-ribbon-hello-b1</module>
         <module>cloud-ribbon-hello-b2</module>
         <module>cloud-ribbon-hello-b3</module>
+        <module>cloud-ribbon-order</module>
+        <module>cloud-ribbon-order2</module>
+        <module>cloud-ribbon-order3</module>
     </modules>
 
     <parent>

@@ -9,3 +9,19 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
   instance:
     prefer-ip-address: true
+RIBBON-SERVICE-B:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
+    ConnectTimeout: 3000
+    ReadTimeout: 60000
+    MaxAutoRetries: 3 #对第一次请求的服务的重试次数
+    MaxAutoRetriesNextServer: 1 #要重试的下一个服务的最大数量（不包括第一个服务）
+    OkToRetryOnAllOperations: true
+    listOfServers: http://localhost:8088/
+#ribbon:
+#  eager-load:
+#    enabled: true
+#    clients: ribbon-service-b, ribbon-service-order
+ribbon:
+  eureka:
+    enabled: false

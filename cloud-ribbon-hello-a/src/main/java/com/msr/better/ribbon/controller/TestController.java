@@ -1,5 +1,6 @@
 package com.msr.better.ribbon.controller;
 
+import com.netflix.loadbalancer.IRule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.client.ClientHttpRequestFactory;
@@ -22,8 +23,13 @@ public class TestController {
 
     @GetMapping("/test")
     public String test(){
-        ClientHttpRequestFactory requestFactory = restTemplate.getRequestFactory();
         String body = restTemplate.getForEntity("http://RIBBON-SERVICE-B/test", String.class).getBody();
+        return body;
+    }
+
+    @GetMapping("/test2")
+    public String test2(){
+        String body = restTemplate.getForEntity("http://RIBBON-SERVICE-ORDER/test", String.class).getBody();
         return body;
     }
 

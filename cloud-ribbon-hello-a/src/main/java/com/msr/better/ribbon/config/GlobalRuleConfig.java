@@ -1,7 +1,7 @@
 package com.msr.better.ribbon.config;
 
 import com.netflix.loadbalancer.IRule;
-import com.netflix.loadbalancer.RandomRule;
+import com.netflix.loadbalancer.RoundRobinRule;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 public class GlobalRuleConfig {
 
 //    @Bean
-    public IRule ribbonRule() {
-        return new RandomRule();
+    public IRule roundRobinRule() {
+        return new RoundRobinRule();
     }
 }
