@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.msr.better</groupId>
-    <artifactId>coud-ribbon-practice</artifactId>
+    <artifactId>cloud-ribbon-practice</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
